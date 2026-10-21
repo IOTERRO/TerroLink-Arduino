@@ -1,0 +1,9 @@
+**/secrets.h
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+**/build/
+*.o
+*.elf
+*.bin
