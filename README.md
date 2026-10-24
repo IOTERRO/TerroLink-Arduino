@@ -42,6 +42,21 @@ void loop() {
 - MQTT password = `DEVICE_AUTH_TOKEN` from TerroLink Cloud  
 - Topic = `telemetry/{mac}/{project}/{mac}`
 
+## Encrypted transport (TLS)
+
+By default the library uses **plain MQTT (port 1883)**: the token and data are not encrypted on the network.
+Since v1.1 you can opt in to **MQTT over TLS (port 8883)** with server verification:
+
+```cpp
+#define TERROLINK_USE_TLS 1
+#define TERROLINK_TLS_BROKER "mqtt.example.com"   // hostname that matches the certificate
+#include <TerroLink.h>
+// ...
+terro.setCACert(TERROLINK_CA_CERT);   // before begin()
+```
+
+In TLS mode it never silently falls back to plaintext. Details, CA certificate and troubleshooting: [`docs/TLS.md`](docs/TLS.md). Example: `examples/TemperatureSensorTLS`.
+
 See [`docs/AUTH.md`](docs/AUTH.md) for authentication details.
 
 ## Folder layout
@@ -51,11 +66,13 @@ TerroLink-Arduino/           ← this repository (public)
   README.md
   LICENSE                    ← MIT
   docs/AUTH.md
+  docs/TLS.md                ? encrypted MQTT (opt-in)
   TerroLink/                 ← Arduino library root (copy into libraries/)
     library.properties
     src/TerroLink.h
     src/TerroLink.cpp
     examples/
       TemperatureSensor/
+      TemperatureSensorTLS/      ? same, over TLS (8883)
       SakoInverterViaTerroLink/   ← migration example only
 ```

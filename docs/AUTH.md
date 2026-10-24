@@ -10,6 +10,8 @@
 
 The library does **not** contain `MASTER_KEY` and does **not** hash anything for login.
 
+> **Transport:** by default the token is sent over plain MQTT (1883), i.e. readable on the network. Enable TLS (8883) to protect it - see [`TLS.md`](TLS.md).
+
 ## Who issues the token?
 
 1. IoT developer opens the **Developer** section of the TerroLink App (future).

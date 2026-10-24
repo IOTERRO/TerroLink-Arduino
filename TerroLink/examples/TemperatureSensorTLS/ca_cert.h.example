@@ -1,0 +1,13 @@
+// Copy this file to ca_cert.h and paste the PEM of the CA that signed your
+// broker's certificate (for Let's Encrypt: "ISRG Root X1", download it from
+// https://letsencrypt.org/certificates/ and check its fingerprint on that page).
+// A CA certificate is PUBLIC - it is fine to commit it. Do NOT paste a private key.
+//
+// Keep the \n line breaks exactly as in the PEM file.
+
+#pragma once
+
+#define TERROLINK_CA_CERT \
+"-----BEGIN CERTIFICATE-----\n" \
+"PASTE_THE_BASE64_LINES_OF_THE_CA_CERTIFICATE_HERE\n" \
+"-----END CERTIFICATE-----\n"
